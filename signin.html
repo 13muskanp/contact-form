@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    
+    <body>
+        <div id="login_div" class="main-div">
+            <h3>Sign In</h3>
+            <input type="email" placeholder="Email" id="email_field">
+            <input type="password" placeholder="Password" id="password_field">
+            <button onclick="login()">Sign In</button><br>
+            <button onclick = "googleSignin()">Google Signin</button><br>
+            <button onclick = "googleSignout()">Google Signout</button><br>
+            <button onclick = "githubSignin()">Github Signin</button><br>
+            <button onclick = "githubSignout()">Github Signout</button><br>
+        </div>
+
+        <div id="user_div" class="loggedin-div">
+            <h3>Welcome User</h3>
+            <p id="user_para">Welcome. You're currently logged in.</p>
+            <button onclick="logout()">Logout</button><br><br>
+        </div>
+        <!-- <li><a href="google-cred.html">Google sign-in using Credentials</a></li> -->
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
