@@ -7,11 +7,10 @@
     
     <body>
         <div id="login_div" class="main-div">
-            <h3>Sign In</h3>
-            <input type="email" placeholder="Email" id="email_field">
-            <input type="password" placeholder="Password" id="password_field">
-            <button onclick="login()">Sign In</button><br>
-            <a class="btn btn-primary btn-lg btn-block" role="button" href="./othermethods.html"> Other </a><br>
+            <h3>Sign In Using Accounts</h3>
+            <i class="fa fa-google-plus"></i>
+            <button onclick = "googleSignin()" class = "btn btn--df btn--blue">Google Signin</button><br>
+            <button onclick = "githubSignin()">Github Signin</button><br>
         </div>
 
         <div id="user_div" class="loggedin-div">
