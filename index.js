@@ -71,11 +71,10 @@ function signUp() {
   });
 }
 
-
+var provider = new firebase.auth.GoogleAuthProvider();
 
 function googleSignin() {
    firebase.auth()
-   var provider = new firebase.auth.GoogleAuthProvider();
    
    .signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
@@ -93,10 +92,10 @@ function googleSignin() {
 }
 
 
+var provider1 = new firebase.auth.GithubAuthProvider();
 
 function githubSignin() {
-    var provider = new firebase.auth.GithubAuthProvider();
-   firebase.auth().signInWithPopup(provider)
+   firebase.auth().signInWithPopup(provider1)
    
    .then(function(result) {
       var token = result.credential.accessToken;
@@ -111,4 +110,13 @@ function githubSignin() {
       console.log(error.code)
       console.log(error.message)
    });
+}
+function githubSignout(){
+  firebase.auth().signOut()
+  
+  .then(function() {
+     console.log('Signout successful!')
+  }, function(error) {
+     console.log('Signout failed')
+  });
 }
