@@ -82,6 +82,10 @@ function googleSignin() {
       
       // console.log(token)
       console.log(user)
+      console.log(user.displayName)
+      console.log(user.email)
+      console.log(user.photoURL)
+// email: "mpandey@mitaoe.ac.in"
 
       // var profile = result.get().getBasicProfile();
       // console.log('ID: ' + profile.getId());
