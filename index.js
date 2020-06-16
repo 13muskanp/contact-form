@@ -86,8 +86,6 @@ function googleSignin() {
       console.log(user.email)
       console.log(user.photoURL)
 
-      document.getElementById("user_para").innerHTML = "Welcome User : " + user.email;
-
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -95,6 +93,7 @@ function googleSignin() {
       console.log(error.code)
       console.log(error.message)
    });
+   document.getElementById("user_para").innerHTML = "Welcome User : " + user.email;
 }
 
 function googleSignout(){
