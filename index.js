@@ -83,7 +83,7 @@ function googleSignin() {
       console.log(token)
       console.log(user)
 
-      var profile = user.get().getBasicProfile();
+      var profile = result.get().getBasicProfile();
       console.log('ID: ' + profile.getId());
       console.log('Full Name: ' + profile.getName());
       console.log('Given Name: ' + profile.getGivenName());
