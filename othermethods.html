@@ -9,8 +9,18 @@
         <div id="login_div" class="main-div">
             <h3>Sign In Using Accounts</h3>
             <i class="fa fa-google-plus"></i>
-            <button onclick = "googleSignin()" class = "btn btn--df btn--blue">Google Signin</button><br>
+            <button  onclick = "googleSignin()" class = "btn btn--df btn--blue">Google Signin</button><br>
             <button onclick = "githubSignin()">Github Signin</button><br>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div><br>
+            <a href="#" onclick="signOut();">Sign out</a>
+            <script>
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                console.log('User signed out.');
+                });
+            }
+            </script>
         </div>
 
         <div id="user_div" class="loggedin-div">
@@ -19,6 +29,8 @@
             <button onclick="logout()">Logout</button><br><br>
         </div>
         <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="index.js"></script>
+        <meta name="google-signin-client_id" content="558856685139-5hmcimeuh2h4ebe1o6ei45m578jvvbjv.apps.googleusercontent.com"></meta>
     </body>
 </html>
