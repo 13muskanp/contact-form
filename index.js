@@ -79,9 +79,18 @@ function googleSignin() {
    .signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
-		
+      
       console.log(token)
       console.log(user)
+
+      var profile = auth.currentUser.get().getBasicProfile();
+      console.log('ID: ' + profile.getId());
+      console.log('Full Name: ' + profile.getName());
+      console.log('Given Name: ' + profile.getGivenName());
+      console.log('Family Name: ' + profile.getFamilyName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail());
+
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
