@@ -80,7 +80,7 @@ function googleSignin() {
       var token = result.credential.accessToken;
       var user = result.user;
       
-      console.log(token)
+      // console.log(token)
       console.log(user)
 
       // var profile = result.get().getBasicProfile();
