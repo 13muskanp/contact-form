@@ -86,6 +86,8 @@ function googleSignin() {
       console.log(user.email)
       console.log(user.photoURL)
 
+      document.getElementById("user_para").innerHTML = "Welcome User : " + user.email;
+
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -115,7 +117,11 @@ function githubSignin() {
       var user = result.user;
 		
       console.log(token)
-      console.log(user)
+      // console.log(user)
+      console.log(user.displayName)
+      console.log(user.email)
+      console.log(user.photoURL)
+
    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
