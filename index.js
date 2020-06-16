@@ -83,13 +83,13 @@ function googleSignin() {
       console.log(token)
       console.log(user)
 
-      var profile = result.get().getBasicProfile();
-      console.log('ID: ' + profile.getId());
-      console.log('Full Name: ' + profile.getName());
-      console.log('Given Name: ' + profile.getGivenName());
-      console.log('Family Name: ' + profile.getFamilyName());
-      console.log('Image URL: ' + profile.getImageUrl());
-      console.log('Email: ' + profile.getEmail());
+      // var profile = result.get().getBasicProfile();
+      // console.log('ID: ' + profile.getId());
+      // console.log('Full Name: ' + profile.getName());
+      // console.log('Given Name: ' + profile.getGivenName());
+      // console.log('Family Name: ' + profile.getFamilyName());
+      // console.log('Image URL: ' + profile.getImageUrl());
+      // console.log('Email: ' + profile.getEmail());
 
    }).catch(function(error) {
       var errorCode = error.code;
