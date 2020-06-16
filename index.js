@@ -93,7 +93,6 @@ function googleSignin() {
       console.log(error.code)
       console.log(error.message)
    });
-   document.getElementById("user_para").innerHTML = "Welcome User : " + user.email;
 }
 
 function googleSignout(){
