@@ -1,9 +1,16 @@
 body {
-  background: #fff;
+  background: #52c1f7;
   padding: 0px;
   margin: 0px;
   font-family: 'Nunito', sans-serif;
   font-size: 16px;
+}
+
+.wrapper {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 0 rgba(0,0,0, .1);
+  padding: 27.5px;
 }
 
 input, button {
@@ -38,9 +45,9 @@ input, button {
 }
 
 .main-div button, .loggedin-div button {
-  background: #5d8ffc;
+  background: #49b0e7;
   color: #fff;
-  border: 1px solid #5d8ffc;
+  border: 1px solid #49b0e7;
   border-radius: 5px;
   padding: 15px;
   display: block;
@@ -52,7 +59,7 @@ input, button {
 
 .main-div button:hover, .loggedin-div button:hover {
   background: #fff;
-  color: #5d8ffc;
-  border: 1px solid #5d8ffc;
+  color: #49b0e7;
+  border: 1px solid #49b0e7;
   cursor: pointer;
 }

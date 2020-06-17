@@ -7,11 +7,12 @@
     
     <body>
         <div id="login_div" class="main-div">
+            <div class="wrapper animated bounceInLeft">
             <h3>Sign In</h3>
             <input type="email" placeholder="Email" id="email_field">
             <input type="password" placeholder="Password" id="password_field">
             <button onclick="login()">Sign In</button><br>
-            <a class="btn btn-primary btn-lg btn-block" role="button" href="./othermethods.html"> Other </a><br>
+            <button  onclick = "googleSignin()">Google Signin</button><br>
         </div>
 
         <div id="user_div" class="loggedin-div">
@@ -19,6 +20,7 @@
             <p id="user_para">Welcome. You're currently logged in.</p>
             <button onclick="logout()">Logout</button><br><br>
         </div>
+    </div>
         <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
         <script src="index.js"></script>
     </body>

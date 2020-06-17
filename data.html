@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="styler.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="title">Book an Appointment!</h1>
+            <div class="wrapper animated bounceInLeft">
+            <div class="contact">
+                <div class="alert">Your data has been sent!</div>
+                <form id="contactForm">
+                <p class="name-field">
+                    <label>Full Name</label>
+                    <input type="text" name="name" id="name" required>
+                </p>
+                <p class="date-field">
+                    <label>Date and Time</label>
+                        <input type="datetime-local" name="date" id="date">
+                </p>
+                <p class="email-field">
+                    <label>Email</label>
+                    <input type="email" name="email" id="email" required>
+                </p>
+                <p class="phone-field">
+                    <label>Phone</label>
+                    <input type="text" name="phone" id="phone">
+                </p>
+                <p class="address-field full">
+                    <label>Address</label>
+                    <textarea name="address" rows="5" id="address"></textarea>
+                </p>
+
+                <p class="submit-button">
+                    <button type="submit">Submit</button>
+                </p>
+                </form>
+            </div>
+            </div>
+        </div>
+        
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="trial.js"></script>
+        <meta name="google-signin-client_id" content="558856685139-5hmcimeuh2h4ebe1o6ei45m578jvvbjv.apps.googleusercontent.com"></meta>
+    </body>
+</html>

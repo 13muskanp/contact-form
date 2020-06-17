@@ -6,20 +6,34 @@
     </head>
     
     <body>
+        <nav class="navbar navbar-expand-sm fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"></a>
+                <div class="collapse navbar-collapse" id="Navbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="./home.html"> Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./signin.html"> Sign In</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#"> Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div id="login_div" class="main-div">
+            <div class="wrapper animated bounceInLeft">
             <h3>Sign Up</h3>
             <input type="email" placeholder="Email" id="email_field" required>
             <input type="password" placeholder="Password" id="password_field" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
             <button onclick="signUp()">Sign Up for Account</button><br>
-            <!-- <button onclick="googleSignIn()">Google Sign In</button><br>
-            <button onclick="googleRedirect()">Google Redirect</button> -->
+            
         </div>
 
         <div id="user_div" class="loggedin-div">
             <h3>Sign Up Successful</h3>
             <p id="user_para">Welcome. You're currently logged in.</p>
+            <a class="btn btn-primary btn-lg btn-block" role="button" href="./data.html"> Book an Appointment </a>
             <button onclick="logout()">Logout</button>
         </div>
+    </div>
         <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
         <script src="index.js"></script>
     </body>
