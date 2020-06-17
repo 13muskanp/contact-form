@@ -1,42 +1,30 @@
 <!doctype html>
     <head>
-        <title>Appointment</title>
+        <title>Home</title>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <nav class="navbar navbar-expand-sm fixed-top">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#"></a>
-                <div class="collapse navbar-collapse" id="Navbar">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link active" href="#"> Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./signin.html"> Sign In</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./signup.html"> Sign Up</a></li>
-                    </ul>
+        <div class="navbar">
+            <ul>
+                <li class="nav-item"><a class="nav-link active" href="#"> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="./signin.html"> Sign In</a></li>
+                <li class="nav-item"><a class="nav-link" href="./signup.html"> Sign Up</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="home-div">
+                <div class="col-12 col-sm-6">
+                    <h1>Doctor Cure-it-all</h1>
+                    <p>Have any kind of medical issues? Connect with us and book an appointment now!! </p>
                 </div>
             </div>
-        </nav>
-
-        <header class="jumbotron">
-            <div class="container">
-                <div class="row row-header">
-                    <div class="col-12 col-sm-6">
-                        <h1>Doctor Cure-it-all</h1>
-                        <p>Have any kind of medical issues? Connect with us and book an appointment now!! </p>
-                    </div>
-                </div>
-            </div>
-        </header>
+        </div>
 
         <div class="container">
-            <div class="row row-content align-items-center">
-                <div class="col-6 offset-3">
-                    <a class="btn btn-primary btn-lg btn-block" role="button" href="./signin.html"> Sign In </a>
-                    <a class="btn btn-primary btn-lg btn-block" role="button" href="./signup.html"> Sign Up </a>
-                </div>
+            <div class="home-body-div">
+                <br>
+                <a class="btn btn-primary btn-lg btn-block" role="button" href="./signin.html"> Sign In </a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" role="button" href="./signup.html"> Sign Up </a>
             </div>
         </div>
     </body>
