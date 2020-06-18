@@ -10,6 +10,51 @@ appId: "1:997934529700:web:77f1e069816e07b6c77a31"
 
 firebase.initializeApp(config);
 
+var photoSave;
+var emailSave;
+
+
+var dataRef = firebase.database().ref('Data');
+  
+  document.getElementById('contactForm').addEventListener('submit', submitForm);
+  
+  function submitForm(e){
+    e.preventDefault();
+  
+    var name = getInputVal('name');
+    // var email = getInputVal('email');
+    var phone = getInputVal('phone');
+    var address = getInputVal('address');
+    var date = getInputVal('date');
+  
+    savedata(name, emailSave, phone, address, date, photoSave);
+  
+    document.querySelector('.alert').style.display = 'block';
+  
+    setTimeout(function(){
+      document.querySelector('.alert').style.display = 'none';
+    },3000);
+  
+    document.getElementById('contactForm').reset();
+  }
+
+  function getInputVal(id){
+    return document.getElementById(id).value;
+  }
+  
+  function savedata(name, emailSave, phone, address, date, photoSave){
+    var newdataRef = dataRef.push();
+    newdataRef.set({
+      name: name,
+      email: email,
+      phone: phone,
+      address: address,
+      date: date,
+      photoSave: photoSave
+    });
+  }
+  
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 
@@ -85,6 +130,7 @@ function googleSignin() {
       console.log(user.displayName)
       console.log(user.email)
       console.log(user.photoURL)
+      photoSave = user.photoURL;
 
    }).catch(function(error) {
       var errorCode = error.code;
@@ -96,39 +142,6 @@ function googleSignin() {
 }
 
 function googleSignout(){
-  firebase.auth().signOut()
-  
-  .then(function() {
-     console.log('Signout successful!')
-  }, function(error) {
-     console.log('Signout failed')
-  });
-}
-
-var provider1 = new firebase.auth.GithubAuthProvider();
-
-function githubSignin() {
-   firebase.auth().signInWithPopup(provider1)
-   
-   .then(function(result) {
-      var token = result.credential.accessToken;
-      var user = result.user;
-		
-      console.log(token)
-      // console.log(user)
-      console.log(user.displayName)
-      console.log(user.email)
-      console.log(user.photoURL)
-
-   }).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-		
-      console.log(error.code)
-      console.log(error.message)
-   });
-}
-function githubSignout(){
   firebase.auth().signOut()
   
   .then(function() {
