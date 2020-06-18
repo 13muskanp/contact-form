@@ -128,6 +128,8 @@ var dataRef = firebase.database().ref('Data');
     var phone = getInputVal('phone');
     var address = getInputVal('address');
     var date = getInputVal('date');
+    photoSave = photoSave;
+    console.log(photoSave)
   
     savedata(name, email, phone, address, date, photoSave);
   
