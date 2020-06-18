@@ -10,7 +10,7 @@ appId: "1:997934529700:web:77f1e069816e07b6c77a31"
 
 firebase.initializeApp(config);
 
-var photoSave;
+var photoSave = 'NULL';
 var emailSave;
 
 
