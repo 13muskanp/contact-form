@@ -14,6 +14,107 @@ var photoSave;
 var emailSave;
 
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+
+    document.getElementById("user_div").style.display = "block";
+    document.getElementById("login_div").style.display = "none";
+
+    var user = firebase.auth().currentUser;
+
+    if(user != null){
+
+      var email_id = user.email;
+      document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
+
+    }
+
+  } else {
+
+    document.getElementById("user_div").style.display = "none";
+    document.getElementById("login_div").style.display = "block";
+
+  }
+});
+
+function login(){
+
+  var userEmail = document.getElementById("email_field").value;
+  var userPass = document.getElementById("password_field").value;
+  emailSave = userEmail;
+
+  firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    if (errorCode === 'auth/wrong-password') {
+      alert('Wrong password.');
+    } else {
+      alert(errorMessage);
+    }
+    console.log(error);
+  });
+
+}
+
+function logout(){
+  firebase.auth().signOut();
+}
+
+function signUp() {
+  var userEmail = document.getElementById("email_field").value;
+  var userPass = document.getElementById("password_field").value;
+  emailSave = userEmail;
+  
+  firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    if (errorCode == 'auth/weak-password') {
+      alert('The password is too weak.');
+    } else {
+      alert(errorMessage);
+    }
+    console.log(error);
+  });
+}
+
+var provider = new firebase.auth.GoogleAuthProvider();
+
+function googleSignin() {
+   firebase.auth()
+   
+   .signInWithPopup(provider).then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+      
+      console.log(token)
+      // console.log(user)
+      console.log(user.displayName)
+      console.log(user.email)
+      console.log(user.photoURL)
+      photoSave = user.photoURL;
+      emailSave = user.email;
+
+   }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+		
+      console.log(error.code)
+      console.log(error.message)
+   });
+}
+
+function googleSignout(){
+  firebase.auth().signOut()
+  
+  .then(function() {
+     console.log('Signout successful!')
+  }, function(error) {
+     console.log('Signout failed')
+  });
+}
+
+
+
 var dataRef = firebase.database().ref('Data');
   
   document.getElementById('contactForm').addEventListener('submit', submitForm);
@@ -54,99 +155,3 @@ var dataRef = firebase.database().ref('Data');
     });
   }
   
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-
-    document.getElementById("user_div").style.display = "block";
-    document.getElementById("login_div").style.display = "none";
-
-    var user = firebase.auth().currentUser;
-
-    if(user != null){
-
-      var email_id = user.email;
-      document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
-
-    }
-
-  } else {
-
-    document.getElementById("user_div").style.display = "none";
-    document.getElementById("login_div").style.display = "block";
-
-  }
-});
-
-function login(){
-
-  var userEmail = document.getElementById("email_field").value;
-  var userPass = document.getElementById("password_field").value;
-
-  firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    if (errorCode === 'auth/wrong-password') {
-      alert('Wrong password.');
-    } else {
-      alert(errorMessage);
-    }
-    console.log(error);
-  });
-
-}
-
-function logout(){
-  firebase.auth().signOut();
-}
-
-function signUp() {
-  var userEmail = document.getElementById("email_field").value;
-  var userPass = document.getElementById("password_field").value;
-  
-  firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    if (errorCode == 'auth/weak-password') {
-      alert('The password is too weak.');
-    } else {
-      alert(errorMessage);
-    }
-    console.log(error);
-  });
-}
-
-var provider = new firebase.auth.GoogleAuthProvider();
-
-function googleSignin() {
-   firebase.auth()
-   
-   .signInWithPopup(provider).then(function(result) {
-      var token = result.credential.accessToken;
-      var user = result.user;
-      
-      console.log(token)
-      // console.log(user)
-      console.log(user.displayName)
-      console.log(user.email)
-      console.log(user.photoURL)
-      photoSave = user.photoURL;
-
-   }).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-		
-      console.log(error.code)
-      console.log(error.message)
-   });
-}
-
-function googleSignout(){
-  firebase.auth().signOut()
-  
-  .then(function() {
-     console.log('Signout successful!')
-  }, function(error) {
-     console.log('Signout failed')
-  });
-}
