@@ -92,7 +92,7 @@ function googleSignin() {
       console.log(user.email)
       console.log(user.photoURL)
       photoSave = user.photoURL;
-      console.log(photoSave)
+      console.log(photoSave);
       emailSave = user.email;
 
    }).catch(function(error) {
@@ -129,7 +129,8 @@ var dataRef = firebase.database().ref('Data');
     var address = getInputVal('address');
     var date = getInputVal('date');
     photoSave = photoSave;
-    console.log(photoSave)
+    console.log('Photo');
+    console.log(photoSave);
   
     savedata(name, email, phone, address, date, photoSave);
   
