@@ -123,12 +123,12 @@ var dataRef = firebase.database().ref('Data');
     e.preventDefault();
   
     var name = getInputVal('name');
-    // var email = getInputVal('email');
+    var email = getInputVal('email');
     var phone = getInputVal('phone');
     var address = getInputVal('address');
     var date = getInputVal('date');
   
-    savedata(name, emailSave, phone, address, date, photoSave);
+    savedata(name, email, phone, address, date, photoSave);
   
     document.querySelector('.alert').style.display = 'block';
   
@@ -143,7 +143,7 @@ var dataRef = firebase.database().ref('Data');
     return document.getElementById(id).value;
   }
   
-  function savedata(name, emailSave, phone, address, date, photoSave){
+  function savedata(name, email, phone, address, date, photoSave){
     var newdataRef = dataRef.push();
     newdataRef.set({
       name: name,
