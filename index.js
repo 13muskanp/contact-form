@@ -92,6 +92,7 @@ function googleSignin() {
       console.log(user.email)
       console.log(user.photoURL)
       photoSave = user.photoURL;
+      console.log(photoSave)
       emailSave = user.email;
 
    }).catch(function(error) {
