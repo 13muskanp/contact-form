@@ -156,3 +156,39 @@ function savedata(name, email, phone, address, date, photo){
     photo: photo
   });
 }
+
+
+ref.on('value', gotData, errData);
+
+ 
+function gotData(data){
+
+  var app_listing = selectAll('.app_listing');
+  for (var i=0; i < app_listing.length; i++){
+    app_listing[i].remove();
+  }
+
+ console.log(data.val());
+  var Data = data.val();
+  var keys = Object.keys(Data);
+  console.log(keys);
+  for (var i = 0; i< keys.length; i++) {
+    var k= keys[i];
+    var name = Data[k].name;
+    var email = Data[k].email;
+    var phone = Data[k].phone;
+    var address = Data[k].address;
+    var date = Data[k].date;
+    var date = Data[k].photo;
+    console.log(name,email,phone,address,date,photo);
+
+   var li = createElement('li',name + ':'+ phone + ':' + date + ':' + email + ':' + address );
+   li.class('app_listing')
+   li.parent('appointmentlist');
+  };
+}
+
+function errData(err){
+	console.log('error!');
+	console.log(err);
+}
