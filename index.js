@@ -129,6 +129,8 @@ function submitForm(e){
   var address = getInputVal('address');
   var date = getInputVal('date');
   // photoSave = photoSave;
+  var user = firebase.auth().currentUser;
+  console.log(user.email);
   // photoSave = user.photoURL;
   console.log('Photo');
   console.log(photoSave);
