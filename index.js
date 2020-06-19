@@ -179,7 +179,7 @@ function gotData(data){
     var phone = Data[k].phone;
     var address = Data[k].address;
     var date = Data[k].date;
-    var date = Data[k].photo;
+    var photo = Data[k].photo;
     console.log(name,email,phone,address,date,photo);
 
    var li = createElement('li',name + ':'+ phone + ':' + date + ':' + email + ':' + address );
