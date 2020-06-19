@@ -6,12 +6,12 @@ projectId: "cf-fb-01",
 storageBucket: "cf-fb-01.appspot.com",
 messagingSenderId: "997934529700",
 appId: "1:997934529700:web:77f1e069816e07b6c77a31"
-
 };
 
 firebase.initializeApp(config);
-var dataRef = firebase.database().ref('Data');
-ref.on('value', gotData, errData);
+
+// var photoSave = 'NULL';
+var emailSave;
 
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -19,6 +19,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     document.getElementById("user_div").style.display = "block";
     document.getElementById("login_div").style.display = "none";
+    ref.on('value', gotData, errData);
 
     var user = firebase.auth().currentUser;
 
@@ -26,7 +27,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
       var email_id = user.email;
       document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
-
     }
 
   } else {
@@ -108,6 +108,9 @@ function googleSignout(){
   });
 }
 
+
+
+var dataRef = firebase.database().ref('Data');
   
 document.getElementById('contactForm').addEventListener('submit', submitForm);
 
@@ -147,6 +150,10 @@ function savedata(name, email, phone, address, date, photo){
     photo: photo
   });
 }
+
+
+ref.on('value', gotData, errData);
+
  
 function gotData(data){
 
