@@ -12,7 +12,6 @@ firebase.initializeApp(config);
 var dataRef = firebase.database().ref('Data');
 
 
-
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 
@@ -22,9 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     var user = firebase.auth().currentUser;
 
     if(user != null){
-
-      var email_id = user.email;
-      document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
+      document.getElementById("user_para").innerHTML = "Welcome User : " + user.email;
     }
 
   } else {
@@ -39,7 +36,6 @@ function login(){
 
   var userEmail = document.getElementById("email_field").value;
   var userPass = document.getElementById("password_field").value;
-  emailSave = userEmail;
 
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
     var errorCode = error.code;
@@ -61,7 +57,6 @@ function logout(){
 function signUp() {
   var userEmail = document.getElementById("email_field").value;
   var userPass = document.getElementById("password_field").value;
-  emailSave = userEmail;
   
   firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
     var errorCode = error.code;
@@ -87,9 +82,6 @@ function googleSignin() {
       console.log(user)
 
    }).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-		
       console.log(error.code)
       console.log(error.message)
    });
@@ -108,17 +100,20 @@ function googleSignout(){
   
 document.getElementById('contactForm').addEventListener('submit', submitForm);
 
+
+// With google
 function submitForm(e){
   e.preventDefault();
 
-  // var name = getInputVal('name');
-  // var email = getInputVal('email');
+  var name = getInputVal('name');
+  var email = getInputVal('email');
   var phone = getInputVal('phone');
   var address = getInputVal('address');
   var date = getInputVal('date');
-  var user = firebase.auth().currentUser;
 
-  savedata(user.displayName, user.email, phone, address, date, user.photoURL);
+  var user = firebase.auth().currentUser;
+  console.log(user.displayName)
+  savedata(name, email, phone, address, date, user.photoURL);
 
   document.querySelector('.alert').style.display = 'block';
 
@@ -129,13 +124,10 @@ function submitForm(e){
   document.getElementById('contactForm').reset();
 }
 
+
 function getInputVal(id){
   return document.getElementById(id).value;
 }
-
-
-
-
 
 
 function displayAll(){
@@ -143,10 +135,6 @@ function displayAll(){
   dataRef.on('value', gotData, errData);
 }
 
-function displayMyData() {
-  var user = firebase.auth().currentUser; 
-  console.log(user);
-}
 
 function savedata(name, email, phone, address, date, photo){
   var newdataRef = dataRef.push();
@@ -163,11 +151,6 @@ function savedata(name, email, phone, address, date, photo){
  
 function gotData(data){
 
-  // var app_listing = selectAll('.app_listing');
-  // for (var i=0; i < app_listing.length; i++){
-  //   app_listing[i].remove();
-  // }
-
  console.log(data.val());
   var Data = data.val();
   var keys = Object.keys(Data);
@@ -181,10 +164,6 @@ function gotData(data){
     var date = Data[k].date;
     var photo = Data[k].photo;
     console.log(name,email,phone,address,date,photo);
-
-  //  var li = createElement('li',name + ':'+ phone + ':' + date + ':' + email + ':' + address );
-  //  li.class('app_listing')
-  //  li.parent('appointmentlist');
   };
 }
 
