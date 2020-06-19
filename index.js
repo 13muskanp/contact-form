@@ -123,19 +123,14 @@ document.getElementById('contactForm').addEventListener('submit', submitForm);
 function submitForm(e){
   e.preventDefault();
 
-  var name = getInputVal('name');
-  var email = getInputVal('email');
+  // var name = getInputVal('name');
+  // var email = getInputVal('email');
   var phone = getInputVal('phone');
   var address = getInputVal('address');
   var date = getInputVal('date');
-  photoSave = 'NULL';
   var user = firebase.auth().currentUser;
-  console.log(user.email);
-  photoSave = user.photoURL;
-  console.log('Photo');
-  console.log(photoSave);
 
-  savedata(name, email, phone, address, date, photoSave);
+  savedata(user.displayName, user.email, phone, address, date, user.photoURL);
 
   document.querySelector('.alert').style.display = 'block';
 
@@ -150,7 +145,7 @@ function getInputVal(id){
   return document.getElementById(id).value;
 }
 
-function savedata(name, email, phone, address, date, photoSave){
+function savedata(name, email, phone, address, date, photo){
   var newdataRef = dataRef.push();
   newdataRef.set({
     name: name,
@@ -158,6 +153,6 @@ function savedata(name, email, phone, address, date, photoSave){
     phone: phone,
     address: address,
     date: date,
-    photoSave: photoSave
+    photo: photo
   });
 }
