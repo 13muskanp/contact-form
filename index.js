@@ -19,7 +19,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     document.getElementById("user_div").style.display = "block";
     document.getElementById("login_div").style.display = "none";
-    ref.on('value', gotData, errData);
 
     var user = firebase.auth().currentUser;
 
@@ -152,8 +151,9 @@ function savedata(name, email, phone, address, date, photo){
 }
 
 
-ref.on('value', gotData, errData);
-
+function displayAll() {
+  ref.on('value', gotData, errData);
+}
  
 function gotData(data){
 
