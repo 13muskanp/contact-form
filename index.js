@@ -36,6 +36,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 function displayAll(){
+  var dataRef = firebase.database().ref('Data');
   ref.on('value', gotData, errData);
 }
 
