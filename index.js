@@ -106,16 +106,13 @@ function submitForm(e){
   e.preventDefault();
 
   var name = getInputVal('name');
-  var email = getInputVal('email');
   var phone = getInputVal('phone');
   var address = getInputVal('address');
   var date = getInputVal('date');
 
   var user = firebase.auth().currentUser;
-  if(!user.displayName)
-    console.log('NULL hai bhai')
     
-  savedata(name, email, phone, address, date, user.photoURL);
+  savedata(name, user.email, phone, address, date, user.photoURL);
 
   document.querySelector('.alert').style.display = 'block';
 

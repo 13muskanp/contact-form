@@ -146,7 +146,7 @@ ul {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       'name date'
-      'email phone'
+      'phone'
       'address address';
   }
 
