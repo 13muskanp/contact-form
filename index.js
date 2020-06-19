@@ -112,7 +112,7 @@ function submitForm(e){
   var date = getInputVal('date');
 
   var user = firebase.auth().currentUser;
-  console.log(user.displayName)
+  console.log('Name: ', user.displayName)
   savedata(name, email, phone, address, date, user.photoURL);
 
   document.querySelector('.alert').style.display = 'block';
