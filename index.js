@@ -163,10 +163,10 @@ function savedata(name, email, phone, address, date, photo){
  
 function gotData(data){
 
-  var app_listing = selectAll('.app_listing');
-  for (var i=0; i < app_listing.length; i++){
-    app_listing[i].remove();
-  }
+  // var app_listing = selectAll('.app_listing');
+  // for (var i=0; i < app_listing.length; i++){
+  //   app_listing[i].remove();
+  // }
 
  console.log(data.val());
   var Data = data.val();
