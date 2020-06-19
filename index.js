@@ -182,9 +182,9 @@ function gotData(data){
     var photo = Data[k].photo;
     console.log(name,email,phone,address,date,photo);
 
-   var li = createElement('li',name + ':'+ phone + ':' + date + ':' + email + ':' + address );
-   li.class('app_listing')
-   li.parent('appointmentlist');
+  //  var li = createElement('li',name + ':'+ phone + ':' + date + ':' + email + ':' + address );
+  //  li.class('app_listing')
+  //  li.parent('appointmentlist');
   };
 }
 
