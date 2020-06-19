@@ -9,9 +9,8 @@ appId: "1:997934529700:web:77f1e069816e07b6c77a31"
 };
 
 firebase.initializeApp(config);
+var dataRef = firebase.database().ref('Data');
 
-// var photoSave = 'NULL';
-var emailSave;
 
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -35,6 +34,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   }
 });
+
+function displayAll(){
+  ref.on('value', gotData, errData);
+}
+
+function displayMyData() {
+  var user = firebase.auth().currentUser; 
+  console.log(user);
+}
 
 function login(){
 
@@ -77,7 +85,6 @@ function signUp() {
 }
 
 var provider = new firebase.auth.GoogleAuthProvider();
-var photoSave;
 function googleSignin() {
    firebase.auth()
    
@@ -107,9 +114,6 @@ function googleSignout(){
   });
 }
 
-
-
-var dataRef = firebase.database().ref('Data');
   
 document.getElementById('contactForm').addEventListener('submit', submitForm);
 
@@ -150,10 +154,6 @@ function savedata(name, email, phone, address, date, photo){
   });
 }
 
-
-function displayAll() {
-  ref.on('value', gotData, errData);
-}
  
 function gotData(data){
 
