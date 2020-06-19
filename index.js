@@ -131,7 +131,7 @@ function submitForm(e){
   photoSave = 'NULL';
   var user = firebase.auth().currentUser;
   console.log(user.email);
-  // photoSave = user.photoURL;
+  photoSave = user.photoURL;
   console.log('Photo');
   console.log(photoSave);
 
