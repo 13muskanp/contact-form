@@ -112,9 +112,9 @@ function submitForm(e){
   var date = getInputVal('date');
 
   var user = firebase.auth().currentUser;
-  if(user == 'NULL')
+  if(user.displayName == 'NULL')
     console.log("NULL hai bhai")
-  console.log('Name: ', user.displayName)
+    
   savedata(name, email, phone, address, date, user.photoURL);
 
   document.querySelector('.alert').style.display = 'block';
