@@ -35,16 +35,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-function displayAll(){
-  var dataRef = firebase.database().ref('Data');
-  ref.on('value', gotData, errData);
-}
-
-function displayMyData() {
-  var user = firebase.auth().currentUser; 
-  console.log(user);
-}
-
 function login(){
 
   var userEmail = document.getElementById("email_field").value;
@@ -141,6 +131,21 @@ function submitForm(e){
 
 function getInputVal(id){
   return document.getElementById(id).value;
+}
+
+
+
+
+
+
+function displayAll(){
+  var dataRef = firebase.database().ref('Data');
+  dataRef.on('value', gotData, errData);
+}
+
+function displayMyData() {
+  var user = firebase.auth().currentUser; 
+  console.log(user);
 }
 
 function savedata(name, email, phone, address, date, photo){
