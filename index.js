@@ -100,8 +100,6 @@ function googleSignout(){
   
 document.getElementById('contactForm').addEventListener('submit', submitForm);
 
-
-// With google
 function submitForm(e){
   e.preventDefault();
 
@@ -128,20 +126,6 @@ function getInputVal(id){
   return document.getElementById(id).value;
 }
 
-
-
-function displayAll(){
-  // var dataRef = firebase.database().ref('Data');
-  // dataRef.on('value', gotData, errData);
-
-var userId = firebase.auth().currentUser.uid;
-return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-  // ...
-});
-}
-
-
 function savedata(name, email, phone, address, date, photo){
   var newdataRef = dataRef.push();
   newdataRef.set({
@@ -154,27 +138,45 @@ function savedata(name, email, phone, address, date, photo){
   });
 }
 
+
+function displayAll(){
+  // var dataRef = firebase.database().ref('Data');
+  // dataRef.on('value', gotData, errData);
+
+  var dataRef = firebase.database().ref('Data');
+dataRef.orderByChild("date").on("child_added", function(snapshot) {
+  // var Name = snapshot.key;
+  var Data = snapshot.val();
+  console.log(Data.name + " booked an appointment for " + Data.date + " date");
+});
+
+// var userId = firebase.auth().currentUser.uid;
+// return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+//   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+//   // ...
+// });
+}
+
  
-function gotData(data){
+// function gotData(data){
 
- console.log(data.val());
-  var Data = data.val();
-  var keys = Object.keys(Data);
-  console.log(keys);
-  for (var i = 0; i< keys.length; i++) {
-    var k= keys[i];
-    var name = Data[k].name;
-    var email = Data[k].email;
-    var phone = Data[k].phone;
-    var address = Data[k].address;
-    var date = Data[k].date;
-    var photo = Data[k].photo;
-    console.log(name,email,phone,address,date,photo);
-  };
-}
+//  console.log(data.val());
+//   var Data = data.val();
+//   var keys = Object.keys(Data);
+//   console.log(keys);
+//   for (var i = 0; i< keys.length; i++) {
+//     var k= keys[i];
+//     var name = Data[k].name;
+//     var email = Data[k].email;
+//     var phone = Data[k].phone;
+//     var address = Data[k].address;
+//     var date = Data[k].date;
+//     var photo = Data[k].photo;
+//     console.log(name,email,phone,address,date,photo);
+//   };
+// }
 
-function errData(err){
-	console.log('error!');
-	console.log(err);
-}
-
+// function errData(err){
+// 	console.log('error!');
+// 	console.log(err);
+// }
