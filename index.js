@@ -153,7 +153,7 @@ dataRef.orderByChild("date").on("child_added", function(snapshot) {
         <div class="card">
           <div class="card--details">
             <div>
-              <h1>${Data.name}</h1>
+              <h4>${Data.name}</h4>
             </div>
             <span class="card--details-ribbon ribbon-${Data.date}">
                 ${Data.date}
