@@ -148,6 +148,8 @@ dataRef.orderByChild("date").on("child_added", function(snapshot) {
   // var Name = snapshot.key;
   var Data = snapshot.val();
   console.log(Data.name + " booked an appointment for " + Data.date + " date");
+  document.write(Data.name + " booked an appointment for " + Data.date + " date");
+  document.write("<br>");
 });
 
 // var userId = firebase.auth().currentUser.uid;
