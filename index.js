@@ -163,8 +163,8 @@ dataRef.orderByChild("date").on("child_added", function(snapshot) {
         </div>
         `
         document.getElementById("user_para").innerHTML += output;
-        document.getElementById("user_div").style.display = "block";
-        document.getElementById("login_div").style.display = "block";
+        document.getElementById("user_div").style.display = "none";
+        document.getElementById("login_div").style.display = "none";
 
   console.log(Data.name + " booked an appointment for " + Data.date + " date");
   // document.write(Data.name + " booked an appointment for " + Data.date + " date");
