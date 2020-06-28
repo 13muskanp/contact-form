@@ -147,9 +147,28 @@ function displayAll(){
 dataRef.orderByChild("date").on("child_added", function(snapshot) {
   // var Name = snapshot.key;
   var Data = snapshot.val();
+
+
+  const output = `
+        <div class="card">
+          <div class="card--details">
+            <div>
+              <h1>${Data.name}</h1>
+            </div>
+            <span class="card--details-ribbon ribbon-${Data.date}">
+                ${Data.date}
+            </span>
+             <p>${Data.email}</p>
+          </div>
+        </div>
+        `
+        document.getElementById("user_para").innerHTML += output;
+        document.getElementById("user_div").style.display = "block";
+        document.getElementById("login_div").style.display = "block";
+
   console.log(Data.name + " booked an appointment for " + Data.date + " date");
-  document.write(Data.name + " booked an appointment for " + Data.date + " date");
-  document.write("<br>");
+  // document.write(Data.name + " booked an appointment for " + Data.date + " date");
+  // document.write("<br>");
 });
 
 // var userId = firebase.auth().currentUser.uid;
