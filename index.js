@@ -162,8 +162,13 @@ dataRef.orderByChild("date").on("child_added", function(snapshot) {
           </div>
         </div>
         `
+  const book_button = `
+        <a role="button" href="./calender2.html">Book Apppointment</a><br>
+  `
+        document.getElementById("user_div").innerHTML = '';
         document.getElementById("user_div").innerHTML += output;
         // document.getElementById("user_div").style.display = "none";
+        document.getElementById("user_div").innerHTML += book_button;
         document.getElementById("login_div").style.display = "none";
 
   console.log(Data.name + " booked an appointment for " + Data.date + " date");
