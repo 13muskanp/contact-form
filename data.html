@@ -3,6 +3,26 @@
         <title>Login</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
         <link rel="stylesheet" href="styler.css" />
+
+
+
+        <!-- Example -->
+        <!-- AddEvent script -->
+        <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
+        <!-- AddEvent Settings -->
+        <script type="text/javascript">
+        window.addeventasync = function(){
+        addeventatc.settings({
+                appleical  : {show:true, text:"Apple Calendar"},
+                google     : {show:true, text:"Google <em>(online)</em>"},
+                office365  : {show:true, text:"Office 365 <em>(online)</em>"},
+                outlook    : {show:true, text:"Outlook"},
+                outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
+                yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
+            });
+        };
+        </script>
     </head>
 
     <body>
@@ -32,13 +52,25 @@
                 <p class="submit-button">
                     <button type="submit">Submit</button>
                 </p>
+                <p>
+                    <a href="https://calendar.google.com/calendar/r/eventedit?text=Appointment&dates=20180512T230000Z/20180513T030000Z">Add to Calendar</a>
+                </p>
+                <p>
+                    <div title="Add to Calendar" class="addeventatc">
+                        Add to Calendar
+                        <span class="start">07/18/2020 8:00 AM</span>
+                        <span class="end">07/18/2020 10:00 AM</span>
+                        <span class="timezone">India/Kolkata</span>
+                        <span class="title">Appointment</span>
+                    </div>
+                </p>
             </form>
             </div>
             </div>
         </div>
         
         <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        
         
         <!-- <script src="https://apis.google.com/js/api.js" type="text/javascript"></script> -->
         <script src="index.js"></script>

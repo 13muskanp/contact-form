@@ -113,7 +113,7 @@ function submitForm(e){
   savedata(name, user.email, phone, address, date, user.photoURL);
 
   document.querySelector('.alert').style.display = 'block';
-
+  addToCal()
   setTimeout(function(){
     document.querySelector('.alert').style.display = 'none';
   },3000);
@@ -172,37 +172,48 @@ dataRef.orderByChild("date").on("child_added", function(snapshot) {
         document.getElementById("login_div").style.display = "none";
 
   console.log(Data.name + " booked an appointment for " + Data.date + " date");
-  // document.write(Data.name + " booked an appointment for " + Data.date + " date");
-  // document.write("<br>");
 });
-
-// var userId = firebase.auth().currentUser.uid;
-// return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-//   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-//   // ...
-// });
 }
 
- 
-// function gotData(data){
 
-//  console.log(data.val());
-//   var Data = data.val();
-//   var keys = Object.keys(Data);
-//   console.log(keys);
-//   for (var i = 0; i< keys.length; i++) {
-//     var k= keys[i];
-//     var name = Data[k].name;
-//     var email = Data[k].email;
-//     var phone = Data[k].phone;
-//     var address = Data[k].address;
-//     var date = Data[k].date;
-//     var photo = Data[k].photo;
-//     console.log(name,email,phone,address,date,photo);
-//   };
-// }
+function addToCal() {
+  var user = firebase.auth().currentUser;
+  var event = {
+    'summary': 'Booking',
+    'location': user.address,
+    'description': 'Appointment',
+    'start': {
+      'dateTime': user.date,
+      'timeZone': 'India/Kolkata',
+    },
+    'end': {
+      'dateTime': user.date,
+      'timeZone': 'India/Kolkata',
+    },
+    'recurrence': [
+      'RRULE:FREQ=DAILY;COUNT=2'
+    ],
+    'attendees': [
+      {'email': user.email},
+    ],
+    'reminders': {
+      'useDefault': false,
+      'overrides': [
+        {'method': 'email', 'minutes': 24 * 60},
+        {'method': 'popup', 'minutes': 10},
+      ],
+    },
+  };
 
-// function errData(err){
-// 	console.log('error!');
-// 	console.log(err);
-// }
+calendar.events.insert({
+  auth: auth,
+  calendarId: 'primary',
+  resource: event,
+}, function(err, event) {
+  if (err) {
+    console.log('There was an error contacting the Calendar service: ' + err);
+    return;
+  }
+  console.log('Event created: %s', event.htmlLink);
+});
+}
